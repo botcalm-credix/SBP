@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trophy, Globe, Activity, Star, LayoutGrid, Calendar } from 'lucide-react';
 
-export type ViewType = 'overview' | 'live' | 'schedule' | 'favorites' | 'betslip';
+export type ViewType = 'overview' | 'live' | 'schedule' | 'favorites' | 'betslip' | 'match-detail';
 
 interface SidebarProps {
   isOpen: boolean;

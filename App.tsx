@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Bell, ChevronDown, User, LogOut, Wallet, Settings } from 'lucide-react';
 import { Sidebar, ViewType } from './components/Sidebar';
 import { BetSlip } from './components/BetSlip';
+import { MatchDetail } from './components/MatchDetail';
 import { MatchCard } from './components/MatchCard';
 import { AIAssistant } from './components/AIAssistant';
 import { InteractiveBanner } from './components/InteractiveBanner';
@@ -105,8 +106,9 @@ const App: React.FC = () => {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedSport, setSelectedSport] = useState<SportType>(SportType.FOOTBALL);
+  const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
   const [bets, setBets] = useState<Bet[]>([]);
-  const [currentView, setCurrentView] = useState<ViewType>('overview');
+  const [currentView, setCurrentView] = useState<ViewType | 'match-detail'>('overview');
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
 
   // Authentication Handlers
@@ -177,6 +179,11 @@ const App: React.FC = () => {
     setFavorites(newFavs);
   };
 
+  const handleMatchClick = (match: Match) => {
+    setSelectedMatch(match);
+    setCurrentView('match-detail');
+  };
+
   // View Logic
   const getFilteredMatches = () => {
     switch (currentView) {
@@ -211,6 +218,38 @@ const App: React.FC = () => {
       );
     }
 
+    if (currentView === 'match-detail' && selectedMatch) {
+      return (
+        <MatchDetail
+          match={selectedMatch}
+          onBack={() => setCurrentView('overview')}
+          onBetSelect={(sel, odds, market) => {
+            // Adapt the generic bet handler for detailed markets
+            // Ideally handleBetSelect needs to be updated to accept market names, 
+            // but for now we map 1/X/2 if possible or just use a generic handler
+            // For simple 1x2 we use the existing one, for others we might need extended logic.
+            // For this demo let's just use the existing one if it matches 1/X/2, otherwise alert
+            if (['1', 'X', '2'].includes(sel) && market.includes('Winner')) {
+              handleBetSelect(selectedMatch, sel as '1' | 'X' | '2', odds);
+            } else {
+              // For extended markets, we'd need to update the Bet interface
+              // For now, let's just add it as a special bet type or reuse logic
+              // Let's create a temporary bet object manually to bypass strict typing for demo
+              const newBet: Bet = {
+                id: Math.random().toString(36).substr(2, 9),
+                matchId: selectedMatch.id,
+                matchTitle: `${selectedMatch.homeTeam.name} - ${selectedMatch.awayTeam.name} (${market})`,
+                selection: sel as any,
+                odds,
+                stake: 10
+              };
+              setBets([...bets, newBet]);
+            }
+          }}
+        />
+      );
+    }
+
     const matches = getFilteredMatches();
 
     if (currentView === 'overview') {
@@ -231,6 +270,7 @@ const App: React.FC = () => {
                 isFavorite={favorites.has(match.id)}
                 onToggleFavorite={toggleFavorite}
                 onBetSelect={(sel, odds) => handleBetSelect(match, sel, odds)}
+                onClick={() => handleMatchClick(match)}
               />
             ))}
           </div>
@@ -244,6 +284,7 @@ const App: React.FC = () => {
                 isFavorite={favorites.has(match.id)}
                 onToggleFavorite={toggleFavorite}
                 onBetSelect={(sel, odds) => handleBetSelect(match, sel, odds)}
+                onClick={() => handleMatchClick(match)}
               />
             ))}
           </div>
@@ -272,6 +313,7 @@ const App: React.FC = () => {
                 isFavorite={favorites.has(match.id)}
                 onToggleFavorite={toggleFavorite}
                 onBetSelect={(sel, odds) => handleBetSelect(match, sel, odds)}
+                onClick={() => handleMatchClick(match)}
               />
             ))}
           </div>
@@ -415,9 +457,10 @@ const App: React.FC = () => {
         {/* Sidebar */}
         <Sidebar
           isOpen={sidebarOpen}
-          currentView={currentView}
+          currentView={currentView === 'match-detail' ? 'overview' : currentView}
           onNavigate={(view) => {
             setCurrentView(view);
+            setSelectedMatch(null); // Reset match selection
             setSidebarOpen(false); // Close sidebar on mobile on nav
           }}
         />
@@ -431,7 +474,7 @@ const App: React.FC = () => {
         )}
 
         {/* Main Content */}
-        <main className="flex-1 p-6 lg:mr-80 pb-24 md:pb-6">
+        <main className="flex-1 p-3 md:p-6 lg:mr-80 pb-24 md:pb-6 relative min-w-0">
           {renderContent()}
         </main>
 
