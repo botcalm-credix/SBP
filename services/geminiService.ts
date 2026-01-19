@@ -2,10 +2,24 @@ import { GoogleGenAI } from "@google/genai";
 import { Match } from "../types";
 
 // Use import.meta.env.API_KEY for Vite
-const ai = new GoogleGenAI({ apiKey: (import.meta as any).env.API_KEY || "" });
+// Use import.meta.env.API_KEY for Vite
+const apiKey = (import.meta as any).env.API_KEY;
+
+const validateApiKey = () => {
+  if (!apiKey || apiKey === "PLACEHOLDER_API_KEY" || apiKey === "") {
+    console.error("Gemini API Key is missing or invalid. Please check .env.local");
+    return false;
+  }
+  return true;
+};
+
+const ai = new GoogleGenAI({ apiKey: apiKey || "" });
 
 export const getMatchInsight = async (match: Match): Promise<string> => {
   try {
+    if (!validateApiKey()) {
+      return "Please configure your Google Gemini API Key in the .env.local file.";
+    }
     const prompt = `
       You are a professional sports betting analyst. 
       Analyze this match briefly: ${match.homeTeam.name} vs ${match.awayTeam.name} in the ${match.league}.
@@ -29,6 +43,9 @@ export const getMatchInsight = async (match: Match): Promise<string> => {
 
 export const chatWithAI = async (message: string, context?: string): Promise<string> => {
   try {
+    if (!validateApiKey()) {
+      return "Please configure your Google Gemini API Key in the .env.local file.";
+    }
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `
@@ -46,6 +63,8 @@ export const chatWithAI = async (message: string, context?: string): Promise<str
 
 export const generateMatchBanner = async (matchTitle: string): Promise<string | null> => {
   try {
+
+    if (!validateApiKey()) return null;
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash-image',
       // Updated prompt for interactive gaming style

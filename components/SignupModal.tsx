@@ -64,7 +64,7 @@ export const SignupModal: React.FC<SignupModalProps> = ({ isOpen, onClose, onSig
                 </div>
 
                 {/* Right Side - Form */}
-                <div className="w-full md:w-7/12 bg-dark-900 flex flex-col relative h-full p-6">
+                <div className="w-full md:w-7/12 bg-dark-900 flex flex-col relative h-full p-6 min-h-0">
                     <button
                         onClick={onClose}
                         className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors z-10"
@@ -84,50 +84,56 @@ export const SignupModal: React.FC<SignupModalProps> = ({ isOpen, onClose, onSig
                             {/* Bonus Selection */}
                             <div className="mb-6">
                                 <label className="block text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">Choose a welcome bonus</label>
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div className="space-y-3">
                                     {/* Sports Bonus */}
                                     <div
                                         onClick={() => setSelectedBonus('sports')}
-                                        className={`cursor-pointer p-3 rounded-xl border relative flex flex-col items-center justify-center text-center space-y-2 transition-all group ${selectedBonus === 'sports' ? 'bg-brand-blue/10 border-brand-blue ring-1 ring-brand-blue' : 'bg-dark-800 border-dark-700 hover:border-gray-600'}`}
+                                        className={`cursor-pointer p-4 rounded-xl border relative flex items-center text-left transition-all group gap-4 ${selectedBonus === 'sports' ? 'bg-brand-blue/10 border-brand-blue ring-1 ring-brand-blue' : 'bg-dark-800 border-dark-700 hover:border-gray-600'}`}
                                     >
-                                        <div className={`p-2 rounded-full ${selectedBonus === 'sports' ? 'bg-brand-blue text-white' : 'bg-dark-700 text-gray-500 group-hover:text-white'}`}>
-                                            <Gift size={18} />
+                                        <div className={`p-2.5 rounded-full shrink-0 ${selectedBonus === 'sports' ? 'bg-brand-blue text-white' : 'bg-dark-700 text-gray-500 group-hover:text-white'}`}>
+                                            <Gift size={20} />
                                         </div>
-                                        <div>
-                                            <div className="text-xs font-bold text-white leading-tight">Bonus for sports</div>
-                                            <div className="text-[10px] text-gray-400 mt-1">Up to 100 USD</div>
+                                        <div className="flex-1">
+                                            <div className="text-sm font-bold text-white leading-tight">Bonus for sports</div>
+                                            <div className="text-xs text-gray-400 mt-0.5">Up to 100 USD</div>
                                         </div>
-                                        {selectedBonus === 'sports' && <div className="absolute top-2 right-2 w-2 h-2 bg-brand-blue rounded-full"></div>}
+                                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${selectedBonus === 'sports' ? 'border-brand-blue bg-brand-blue' : 'border-dark-600'}`}>
+                                            {selectedBonus === 'sports' && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                                        </div>
                                     </div>
 
                                     {/* Casino Bonus */}
                                     <div
                                         onClick={() => setSelectedBonus('casino')}
-                                        className={`cursor-pointer p-3 rounded-xl border relative flex flex-col items-center justify-center text-center space-y-2 transition-all group ${selectedBonus === 'casino' ? 'bg-brand-blue/10 border-brand-blue ring-1 ring-brand-blue' : 'bg-dark-800 border-dark-700 hover:border-gray-600'}`}
+                                        className={`cursor-pointer p-4 rounded-xl border relative flex items-center text-left transition-all group gap-4 ${selectedBonus === 'casino' ? 'bg-brand-blue/10 border-brand-blue ring-1 ring-brand-blue' : 'bg-dark-800 border-dark-700 hover:border-gray-600'}`}
                                     >
-                                        <div className={`p-2 rounded-full ${selectedBonus === 'casino' ? 'bg-brand-blue text-white' : 'bg-dark-700 text-gray-500 group-hover:text-white'}`}>
-                                            <Dices size={18} />
+                                        <div className={`p-2.5 rounded-full shrink-0 ${selectedBonus === 'casino' ? 'bg-brand-blue text-white' : 'bg-dark-700 text-gray-500 group-hover:text-white'}`}>
+                                            <Dices size={20} />
                                         </div>
-                                        <div>
-                                            <div className="text-xs font-bold text-white leading-tight">Casino + Games</div>
-                                            <div className="text-[10px] text-gray-400 mt-1">Up to 1500 USD</div>
+                                        <div className="flex-1">
+                                            <div className="text-sm font-bold text-white leading-tight">Casino + Games</div>
+                                            <div className="text-xs text-gray-400 mt-0.5">Up to 1500 USD</div>
                                         </div>
-                                        {selectedBonus === 'casino' && <div className="absolute top-2 right-2 w-2 h-2 bg-brand-blue rounded-full"></div>}
+                                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${selectedBonus === 'casino' ? 'border-brand-blue bg-brand-blue' : 'border-dark-600'}`}>
+                                            {selectedBonus === 'casino' && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                                        </div>
                                     </div>
 
                                     {/* Reject Bonus */}
                                     <div
                                         onClick={() => setSelectedBonus('reject')}
-                                        className={`cursor-pointer p-3 rounded-xl border relative flex flex-col items-center justify-center text-center space-y-2 transition-all group ${selectedBonus === 'reject' ? 'bg-brand-blue/10 border-brand-blue ring-1 ring-brand-blue' : 'bg-dark-800 border-dark-700 hover:border-gray-600'}`}
+                                        className={`cursor-pointer p-4 rounded-xl border relative flex items-center text-left transition-all group gap-4 ${selectedBonus === 'reject' ? 'bg-brand-blue/10 border-brand-blue ring-1 ring-brand-blue' : 'bg-dark-800 border-dark-700 hover:border-gray-600'}`}
                                     >
-                                        <div className={`p-2 rounded-full ${selectedBonus === 'reject' ? 'bg-brand-blue text-white' : 'bg-dark-700 text-gray-500 group-hover:text-white'}`}>
-                                            <CircleOff size={18} />
+                                        <div className={`p-2.5 rounded-full shrink-0 ${selectedBonus === 'reject' ? 'bg-brand-blue text-white' : 'bg-dark-700 text-gray-500 group-hover:text-white'}`}>
+                                            <CircleOff size={20} />
                                         </div>
-                                        <div>
-                                            <div className="text-xs font-bold text-white leading-tight">Reject bonuses</div>
-                                            <div className="text-[10px] text-gray-400 mt-1">Decide later</div>
+                                        <div className="flex-1">
+                                            <div className="text-sm font-bold text-white leading-tight">Reject bonuses</div>
+                                            <div className="text-xs text-gray-400 mt-0.5">Decide later</div>
                                         </div>
-                                        {selectedBonus === 'reject' && <div className="absolute top-2 right-2 w-2 h-2 bg-brand-blue rounded-full"></div>}
+                                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${selectedBonus === 'reject' ? 'border-brand-blue bg-brand-blue' : 'border-dark-600'}`}>
+                                            {selectedBonus === 'reject' && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
