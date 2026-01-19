@@ -11,12 +11,12 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentView, onNavigate }) => {
   const popularLeagues = [
-    { name: 'UEFA Champions', count: 38 },
-    { name: 'Premier League', count: 153 },
-    { name: 'La Liga', count: 156 },
-    { name: 'Serie A', count: 148 },
-    { name: 'Bundesliga', count: 150 },
-    { name: 'Ligue 1', count: 159 },
+    { name: 'Champions League', count: 38, logo: 'https://crests.football-data.org/CL.png' },
+    { name: 'Premier League', count: 153, logo: 'https://crests.football-data.org/PL.png' },
+    { name: 'La Liga', count: 156, logo: 'https://crests.football-data.org/PD.png' },
+    { name: 'Serie A', count: 148, logo: 'https://crests.football-data.org/SA.png' },
+    { name: 'Bundesliga', count: 150, logo: 'https://crests.football-data.org/BL1.png' },
+    { name: 'Ligue 1', count: 159, logo: 'https://crests.football-data.org/FL1.png' },
   ];
 
   return (
@@ -68,7 +68,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentView, onNavigat
                 className="flex items-center justify-between px-2 py-2 text-sm font-medium text-gray-400 hover:bg-dark-800 hover:text-white rounded-md group"
               >
                 <div className="flex items-center">
-                  <Trophy size={16} className="mr-3 text-gray-600 group-hover:text-brand-blue" />
+                  {league.logo ? (
+                    <div className="w-6 h-6 mr-3 rounded-full bg-white p-0.5 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                      <img src={league.logo} alt={league.name} className="w-full h-full object-contain" />
+                    </div>
+                  ) : (
+                    <Trophy size={16} className="mr-3 text-gray-600 group-hover:text-brand-blue" />
+                  )}
                   {league.name}
                 </div>
                 <span className="text-xs text-gray-600 group-hover:text-gray-400">{league.count}</span>
@@ -117,7 +123,7 @@ const CountryItem = ({ name, count, flagUrl }: { name: string, count: number, fl
   >
     <div className="flex items-center">
       {flagUrl ? (
-        <img src={flagUrl} alt={name} className="w-4 h-3 mr-3 object-cover rounded-[2px]" />
+        <img src={flagUrl} alt={name} className="w-5 h-5 mr-3 object-cover rounded-full shadow-sm flex-shrink-0" />
       ) : (
         <Globe size={16} className="mr-3 text-gray-600 group-hover:text-brand-blue" />
       )}
