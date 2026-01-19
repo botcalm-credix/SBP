@@ -27,7 +27,7 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'live2',
     league: 'Serie A',
-    homeTeam: { name: 'Napoli', logo: '/napoli.svg?v=2' },
+    homeTeam: { name: 'Napoli', logo: '/napoli.png' },
     awayTeam: { name: 'Inter Milan', logo: 'https://crests.football-data.org/108.svg' },
     startTime: 'Live',
     status: 'Live',
@@ -449,7 +449,7 @@ const App: React.FC = () => {
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center mb-1 mx-auto border border-blue-500/20 overflow-hidden">
                   <img
-                    src="/napoli.svg?v=2"
+                    src="/napoli.png"
                     alt="Napoli"
                     className="w-full h-full object-contain"
                     onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Napoli&background=fff&color=000&rounded=true`; }}
