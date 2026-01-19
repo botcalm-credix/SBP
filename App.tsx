@@ -16,8 +16,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'live1',
     league: 'Premier League',
-    homeTeam: { name: 'Liverpool FC', logo: 'https://logo.clearbit.com/liverpoolfc.com' },
-    awayTeam: { name: 'Man United', logo: 'https://logo.clearbit.com/manutd.com' },
+    homeTeam: { name: 'Liverpool FC', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png' },
+    awayTeam: { name: 'Man United', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/1200px-Manchester_United_FC_crest.svg.png' },
     startTime: 'Live',
     status: 'Live',
     minute: 74,
@@ -27,8 +27,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'live2',
     league: 'Serie A',
-    homeTeam: { name: 'Napoli', logo: 'https://logo.clearbit.com/sscnapoli.it' },
-    awayTeam: { name: 'Inter Milan', logo: 'https://logo.clearbit.com/inter.it' },
+    homeTeam: { name: 'Napoli', logo: '/napoli.svg?v=2' },
+    awayTeam: { name: 'Inter Milan', logo: 'https://crests.football-data.org/108.svg' },
     startTime: 'Live',
     status: 'Live',
     minute: 62,
@@ -38,8 +38,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'live3',
     league: 'Ligue 1',
-    homeTeam: { name: 'PSG', logo: 'https://logo.clearbit.com/psg.fr' },
-    awayTeam: { name: 'Marseille', logo: 'https://logo.clearbit.com/om.fr' },
+    homeTeam: { name: 'PSG', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Paris_Saint-Germain_F.C..svg/1200px-Paris_Saint-Germain_F.C..svg.png' },
+    awayTeam: { name: 'Marseille', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Olympique_Marseille_logo.svg/1200px-Olympique_Marseille_logo.svg.png' },
     startTime: 'Live',
     status: 'Live',
     minute: 12,
@@ -50,8 +50,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'up1',
     league: 'La Liga',
-    homeTeam: { name: 'Real Madrid', logo: 'https://logo.clearbit.com/realmadrid.com' },
-    awayTeam: { name: 'Atletico', logo: 'https://logo.clearbit.com/atleticodemadrid.com' },
+    homeTeam: { name: 'Real Madrid', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png' },
+    awayTeam: { name: 'Atletico', logo: 'https://crests.football-data.org/78.svg' },
     startTime: 'Today, 10:00 PM',
     status: 'Scheduled',
     odds: { home: 1.70, draw: 4.10, away: 2.05 }
@@ -59,8 +59,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'up2',
     league: 'Bundesliga',
-    homeTeam: { name: 'Leverkusen', logo: 'https://logo.clearbit.com/bayer04.de' },
-    awayTeam: { name: 'RB Leipzig', logo: 'https://logo.clearbit.com/rbleipzig.com' },
+    homeTeam: { name: 'Leverkusen', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/59/Bayer_04_Leverkusen_logo.svg/1200px-Bayer_04_Leverkusen_logo.svg.png' },
+    awayTeam: { name: 'RB Leipzig', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/04/RB_Leipzig_2014_logo.svg/1200px-RB_Leipzig_2014_logo.svg.png' },
     startTime: 'Today, 08:45 PM',
     status: 'Scheduled',
     odds: { home: 2.20, draw: 3.50, away: 3.00 }
@@ -69,8 +69,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'sch1',
     league: 'Bundesliga',
-    homeTeam: { name: 'B. Dortmund', logo: 'https://logo.clearbit.com/bvb.de' },
-    awayTeam: { name: 'Bayern Munich', logo: 'https://logo.clearbit.com/fcbayern.com' },
+    homeTeam: { name: 'B. Dortmund', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/1200px-Borussia_Dortmund_logo.svg.png' },
+    awayTeam: { name: 'Bayern Munich', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg/1200px-FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg.png' },
     startTime: 'Tomorrow, 05:30 PM',
     status: 'Scheduled',
     odds: { home: 3.20, draw: 3.80, away: 1.95 }
@@ -78,8 +78,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'sch2',
     league: 'Premier League',
-    homeTeam: { name: 'Arsenal', logo: 'https://logo.clearbit.com/arsenal.com' },
-    awayTeam: { name: 'Chelsea', logo: 'https://logo.clearbit.com/chelseafc.com' },
+    homeTeam: { name: 'Arsenal', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/1200px-Arsenal_FC.svg.png' },
+    awayTeam: { name: 'Chelsea', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png' },
     startTime: 'Tomorrow, 02:00 PM',
     status: 'Scheduled',
     odds: { home: 1.90, draw: 3.60, away: 3.80 }
@@ -88,8 +88,8 @@ const MOCK_MATCHES: Match[] = [
   {
     id: 'sch3',
     league: 'Serie A',
-    homeTeam: { name: 'Juventus', logo: 'https://logo.clearbit.com/juventus.com' },
-    awayTeam: { name: 'AC Milan', logo: 'https://logo.clearbit.com/acmilan.com' },
+    homeTeam: { name: 'Juventus', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Juventus_FC_2017_icon_%28black%29.svg/1200px-Juventus_FC_2017_icon_%28black%29.svg.png' },
+    awayTeam: { name: 'AC Milan', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/1200px-Logo_of_AC_Milan.svg.png' },
     startTime: 'Sat, 18:00',
     status: 'Scheduled',
     odds: { home: 2.40, draw: 3.10, away: 2.90 }
@@ -449,7 +449,7 @@ const App: React.FC = () => {
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center mb-1 mx-auto border border-blue-500/20 overflow-hidden">
                   <img
-                    src="https://logo.clearbit.com/sscnapoli.it"
+                    src="/napoli.svg?v=2"
                     alt="Napoli"
                     className="w-full h-full object-contain"
                     onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Napoli&background=fff&color=000&rounded=true`; }}
@@ -465,7 +465,7 @@ const App: React.FC = () => {
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center mb-1 mx-auto border border-indigo-500/20 overflow-hidden">
                   <img
-                    src="https://logo.clearbit.com/inter.it"
+                    src="https://crests.football-data.org/108.svg"
                     alt="Inter"
                     className="w-full h-full object-contain"
                     onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Inter&background=fff&color=000&rounded=true`; }}

@@ -84,11 +84,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentView, onNavigat
             <span className="text-xs text-gray-600 bg-dark-800 px-1.5 py-0.5 rounded">1095</span>
           </div>
           <nav className="space-y-1">
-            <CountryItem name="Germany" count={220} code="DE" />
-            <CountryItem name="France" count={190} code="FR" />
-            <CountryItem name="Spain" count={310} code="ES" />
-            <CountryItem name="England" count={215} code="GB" />
-            <CountryItem name="Italy" count={160} code="IT" />
+            <CountryItem name="Germany" count={220} flagUrl="https://flagcdn.com/w40/de.png" />
+            <CountryItem name="France" count={190} flagUrl="https://flagcdn.com/w40/fr.png" />
+            <CountryItem name="Spain" count={310} flagUrl="https://flagcdn.com/w40/es.png" />
+            <CountryItem name="England" count={215} flagUrl="https://flagcdn.com/w40/gb-eng.png" />
+            <CountryItem name="Italy" count={160} flagUrl="https://flagcdn.com/w40/it.png" />
           </nav>
         </div>
 
@@ -101,8 +101,8 @@ const NavItem = ({ icon, label, active = false, onClick }: { icon: React.ReactNo
   <button
     onClick={onClick}
     className={`w-full flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors ${active
-        ? 'bg-dark-800 text-brand-blue'
-        : 'text-gray-400 hover:bg-dark-800 hover:text-white'
+      ? 'bg-dark-800 text-brand-blue'
+      : 'text-gray-400 hover:bg-dark-800 hover:text-white'
       }`}
   >
     <span className={`mr-3 ${active ? 'text-brand-blue' : 'text-gray-500'}`}>{icon}</span>
@@ -110,13 +110,17 @@ const NavItem = ({ icon, label, active = false, onClick }: { icon: React.ReactNo
   </button>
 );
 
-const CountryItem = ({ name, count }: { name: string, count: number, code: string }) => (
+const CountryItem = ({ name, count, flagUrl }: { name: string, count: number, flagUrl?: string }) => (
   <a
     href="#"
     className="flex items-center justify-between px-2 py-2 text-sm font-medium text-gray-400 hover:bg-dark-800 hover:text-white rounded-md group"
   >
     <div className="flex items-center">
-      <Globe size={16} className="mr-3 text-gray-600 group-hover:text-brand-blue" />
+      {flagUrl ? (
+        <img src={flagUrl} alt={name} className="w-4 h-3 mr-3 object-cover rounded-[2px]" />
+      ) : (
+        <Globe size={16} className="mr-3 text-gray-600 group-hover:text-brand-blue" />
+      )}
       {name}
     </div>
     <span className="text-xs text-gray-600 group-hover:text-gray-400">{count}</span>
