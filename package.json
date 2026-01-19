@@ -1,0 +1,27 @@
+{
+  "name": "betlive-pro",
+  "version": "1.0.0",
+  "description": "Premium Sports Betting PWA with Gemini AI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sahan-l/SBP.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^1.37.0",
+    "lucide-react": "^0.344.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.5"
+  }
+}

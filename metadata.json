@@ -1,0 +1,5 @@
+{
+  "name": "SBS",
+  "description": "A premium sports betting PWA featuring live odds, real-time match tracking, and AI-powered insights using Gemini.",
+  "requestFramePermissions": []
+}
