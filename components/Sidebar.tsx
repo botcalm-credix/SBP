@@ -36,7 +36,7 @@ useEffect(() => {
   ];
 
   return (
-    <aside className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:sticky md:top-16 z-40 w-64 h-[calc(100vh-130px)] z-50 bg-dark-900 border-r border-dark-700 overflow-y-auto transition-transform duration-300 ease-in-out`}>
+    <aside className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:sticky md:top-16 z-40 w-64 h-[calc(100dvh-130px)] z-50 bg-dark-900 border-r border-dark-700 overflow-y-auto transition-transform duration-300 ease-in-out`}>
       <div className="p-4 space-y-6">
 
         {/* Main Nav */}
